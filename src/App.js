@@ -1,18 +1,17 @@
-
 import "./styles.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function App() {
   const [gameRunning, setGameRunning] = useState(false);
-const [value,setValue] = useState("Play")
+  const [value,setValue] = useState("Play")
 const handleClick = () =>{
 setGameRunning(prev=>!prev)
-if(value === "Play"){
-  setValue("Pause")
-}else{
-  setValue("Play")
 }
-}
+useEffect(() => {
+  setValue(gameRunning ? "Play" : "Pause");
+}, [gameRunning]);
+
+console.log(gameRunning)
   /* Challenge
   
     Kullanıcının bir video oyununu oynatmasını ve duraklatmasını sağlayacak buton oluşturuyorsunuz. Göreviniz bunu ayarlamak ve aşağıdaki div'e (satır 26) aşağıdaki gibi yerleştirmektir: 
